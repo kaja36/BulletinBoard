@@ -8,7 +8,48 @@
   */
 .threadTitle {
   text-align: center;
-}  
+}
+
+header {
+  display: flex;
+  background-color: #66d48b;
+  height: 75px;
+  color: white;
+}
+.header_title {
+  flex: 1;
+  width: 100%;
+  font-size: 32px;
+  margin: auto auto auto 25px;
+}
+.header_button {
+  height: 50px;
+  color: white;
+  margin: auto 25px auto auto;
+  display: flex; /* フレックスコンテナにする */
+  align-items: center; /* 垂直方向に中央揃え */
+  justify-content: center; /* 水平方向に中央揃え */
+}
+.header_button u{
+  text-decoration-thickness: 1px;
+}
+
+.thread_list {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 50%;
+}
+
+.thread_list h2 {
+  text-align: center;
+}
+
+.thread_list button{
+  height: 50px;
+  margin-top: 5px;
+}
+
 
 .logo {
   height: 6em;
