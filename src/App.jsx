@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Link } from 'react-router-dom';
 import "./App.css";
+import NewThread from "./threads/new";
 
 function App() {
   const [threads, setThreads] = useState();
@@ -25,9 +25,9 @@ function App() {
     <>
       <header>
         <p class="header_title">掲示板</p>
-        <a class="header_button">
+        <Link to="/threads/new" class="header_button">
           <u>スレッドを立てる</u>
-        </a>
+        </Link>
       </header>
       <div class="thread_list">
         <h2>新着スレッド</h2>
