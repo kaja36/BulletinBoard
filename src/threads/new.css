@@ -1,0 +1,39 @@
+.thread_form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.thread_form h2{
+    margin-top: 75px;
+    margin-bottom: 100px;
+}
+
+
+.thread_form label {
+    width: 100%; /* ラベルの幅を100%に設定 */
+    margin-bottom: 65px; /* ラベルの下に65pxのマージンを設定 */
+}
+
+.thread_form input{
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    align-self: center;
+}
+
+.actions{
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.actions button{
+    background-color: #66d48b;
+    color: white;
+    width: 100px;
+}

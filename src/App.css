@@ -36,13 +36,17 @@ header {
 
 .thread_list {
   display: flex;
+  align-self: center;
   flex-direction: column;
   margin: auto;
-  width: 50%;
+  margin-bottom: 50px;
+  width: 40%;
 }
 
 .thread_list h2 {
+  align-self: start;
   text-align: center;
+  margin: 40px 0;
 }
 
 .thread_list button{
