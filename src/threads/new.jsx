@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 
 import "./new.css";
+import Header from "../header";
 
 function NewThread() {
   const [threadTitle, setThreadTitle] = useState("");
@@ -28,13 +29,7 @@ function NewThread() {
   }
   return (
     <div>
-      <header>
-        <p className="header_title">掲示板</p>
-        <Link to="/threads/new" className="header_button">
-          <u>スレッドを立てる</u>
-        </Link>
-      </header>
-
+      <Header />
       <form className="thread_form" method="post" onSubmit={handleSubmit}>
         <h2>スレッド新規作成</h2>
         <label>
