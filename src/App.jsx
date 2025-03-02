@@ -24,12 +24,12 @@ function App() {
   return (
     <>
       <header>
-        <p class="header_title">掲示板</p>
-        <Link to="/threads/new" class="header_button">
+        <p className="header_title">掲示板</p>
+        <Link to="/threads/new" className="header_button">
           <u>スレッドを立てる</u>
         </Link>
       </header>
-      <div class="thread_list">
+      <div className="thread_list">
         <h2>新着スレッド</h2>
         {threads}
       </div>

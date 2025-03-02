@@ -1,27 +1,49 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
+import { useState } from "react";
+import axios from "axios";
 
 import "./new.css";
 
 function NewThread() {
+  const [threadTitle, setThreadTitle] = useState("");
+  const navigate = useNavigate(); //必要
+
   function handleSubmit(e) {
     // Prevent the browser from reloading the page
     e.preventDefault();
     console.log("submit");
+
+    axios
+      .post("https://railway.bulletinboard.techtrain.dev/threads", {
+        title: threadTitle,
+      })
+      .then((res) => {
+        console.log(res.data);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("There was an error creating the thread!", error);
+      });
   }
   return (
     <div>
       <header>
-        <p class="header_title">掲示板</p>
-        <Link to="/threads/new" class="header_button">
+        <p className="header_title">掲示板</p>
+        <Link to="/threads/new" className="header_button">
           <u>スレッドを立てる</u>
         </Link>
       </header>
 
-      <form class="thread_form" method="post" onSubmit={handleSubmit}>
+      <form className="thread_form" method="post" onSubmit={handleSubmit}>
         <h2>スレッド新規作成</h2>
         <label>
-          <input name="thread_title" placeholder="スレッドタイトル"/>
+          <input
+            name="thread_title"
+            placeholder="スレッドタイトル"
+            value={threadTitle}
+            onChange={(e) => setThreadTitle(e.target.value)}
+          />
         </label>
         <div className="actions">
           <Link to="/">
