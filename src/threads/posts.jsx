@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import Header from "../header";
 import "./posts.css";
@@ -7,12 +7,18 @@ import "./posts.css";
 function Posts() {
   const [posts, setPosts] = useState();
   const { thread_id } = useParams();
+  const location = useLocation();
+  const { thread } = location.state || {};
+
+  const [postData, setPostData] = useState();
 
   useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  function fetchPosts() {
     fetch(
-      "https://railway.bulletinboard.techtrain.dev/threads/" +
-        thread_id +
-        "/posts"
+      `https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`
     )
       .then((response) => {
         if (!response.ok) {
@@ -21,16 +27,33 @@ function Posts() {
         return response.json();
       })
       .then((data) => {
-        const posts = data.map((post) => {
+        console.log(data);
+        const posts = data.posts.map((post) => {
           return (
-            <div key={post.id}>
+            <li key={post.id} className="post">
               <p>{post.post}</p>
-            </div>
+            </li>
           );
         });
         setPosts(posts);
       });
-  }, []);
+  }
+
+  function handlePosting(e) {
+    e.preventDefault();
+    axios
+      .post(
+        `https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`,
+        { post: postData }
+      )
+      .then(() => {
+        fetchPosts();
+        setPostData("");
+      })
+      .catch((error) => {
+        console.error("postingError", error);
+      });
+  }
 
   return (
     <div>
@@ -38,13 +61,20 @@ function Posts() {
       <div className="postPage">
         <ul>
           <li>
-            <h2>スレッドタイトル</h2>
+            <h2>{thread}</h2>
           </li>
           <li>
-            <div className="postsList">{posts}あ</div>
-            <form className="postForm">
+            <ol className="postsList">{posts}</ol>
+            <form className="postForm" method="post" onSubmit={handlePosting}>
               <label>
-                <textarea name="post" cols="20" rows="5" placeholder="投稿しよう！" />
+                <textarea
+                  name="post"
+                  cols="20"
+                  rows="5"
+                  placeholder="投稿しよう！"
+                  onChange={(e) => setPostData(e.target.value)}
+                  value={postData}
+                />
               </label>
               <button type="submit">投稿</button>
             </form>

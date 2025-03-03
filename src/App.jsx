@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   function navigateToThread(thread) {
-    navigate(`/threads/${thread.id}`);
+    navigate(`/threads/${thread.id}`, {state: {thread: thread.title}});
     console.log(thread.id);
   }
 
