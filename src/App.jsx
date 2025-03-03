@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Link, useNavigate } from "react-router-dom";
 import "./App.css";
+//import NewThread from "./threads/new";
+import Header from "./header";
 
 function App() {
   const [threads, setThreads] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("https://railway.bulletinboard.techtrain.dev/threads")
@@ -16,20 +18,25 @@ function App() {
       })
       .then((data) => {
         const threads = data.map((thread) => {
-          return <button>{thread.title}</button>;
+          return (
+            <button key={thread.id} onClick={() => navigateToThread(thread)}>
+              {thread.title}
+            </button>
+          );
         });
         setThreads(threads);
       });
   }, []);
+
+  function navigateToThread(thread) {
+    navigate(`/threads/${thread.id}`, {state: {thread: thread.title}});
+    console.log(thread.id);
+  }
+
   return (
     <>
-      <header>
-        <p class="header_title">掲示板</p>
-        <a class="header_button">
-          <u>スレッドを立てる</u>
-        </a>
-      </header>
-      <div class="thread_list">
+      <Header />
+      <div className="thread_list">
         <h2>新着スレッド</h2>
         {threads}
       </div>
