@@ -1,0 +1,67 @@
+.postPage {
+  display: flex;
+  margin: 0 100px;
+  justify-content: space-between;
+}
+
+.postPage ul {
+  width: 100%;
+  padding: 0;
+}
+.postPage li {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+.postPage h2 {
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+
+.postsList {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  padding: 0;
+}
+
+.post {
+  height: 100px;
+  width: 100%;
+  background-color: white;
+  padding: 15px 30px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.post p{
+    width: 100%;
+    text-align: center;
+    align-self: center;
+}
+
+.postForm {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  margin-left: 10%;
+}
+
+.postForm textarea {
+  width: 100%;
+  box-sizing: border-box; /* パディングとボーダーを含めて幅を計算 */
+  margin-bottom: 40px;
+  padding: 15px;
+  border: none;
+  resize: none;
+  font-size: 14px;
+}
+
+.postForm button {
+  width: 100%;
+  background-color: #66d48b;
+  color: white;
+}

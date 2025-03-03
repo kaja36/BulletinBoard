@@ -17,11 +17,22 @@ header {
   color: white;
 }
 .header_title {
-  flex: 1;
   width: 100%;
   font-size: 32px;
   margin: auto auto auto 25px;
 }
+.no-style-link {
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+  margin: auto auto auto 25px;
+}
+
+.no-style-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 .header_button {
   height: 50px;
   color: white;
